@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Review - Elbadr Technology</title>
+    <!-- تم تعديل مسار ملف الـ CSS هنا -->
+    <link rel="stylesheet" href="review.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="../account/elbadr LOGO.jpg">
+</head>
+
+<body>
+
+    <!-- الهيدر الموحد -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-brand">
+                <a href="../home/home.html" class="logo-link">
+                    <img src="../account/elbadr LOGO.jpg" alt="Elbadr Tech Logo" class="brand-logo-img"
+                        onerror="this.style.display='none'; document.getElementById('fallback-logo-text').style.display='block';">
+                    <span id="fallback-logo-text" class="logo-text" style="display: none;">Elbadr Tech</span>
+                </a>
+            </div>
+
+            <nav class="header-nav">
+                <ul id="nav-links">
+                    <li><a href="../home/home.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../product/product.html"><i class="fas fa-shopping-bag"></i> Products</a></li>
+                    <li><a href="../account/account.html"><i class="fas fa-user"></i> Account</a></li>
+                    <li><a href="#footerr"><i class="fas fa-headset"></i> Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#" onclick="logoutUser(event)" class="header-logout-btn"><i class="fas fa-sign-out-alt"></i>
+                    Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-wrapper">
+        <div class="store-review-container">
+
+            <div class="store-review-header">
+                <div>
+                    <h1>Product Review & Rating</h1>
+                    <p>Share your experience with your recent appliance purchase</p>
+                </div>
+                <div class="store-badge">
+                    <i class="fa-solid fa-shield-check"></i> Verified Buyer
+                </div>
+            </div>
+
+            <div class="store-review-body">
+                <form id="feedbackForm">
+
+                    <!-- اختيار الجهاز المشترى -->
+                    <div class="form-group">
+                        <label for="orderSelect">Select Purchased Appliance:</label>
+                        <div class="custom-select-box">
+                            <select id="orderSelect" required>
+                                <option value="" disabled selected>Loading your orders...</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+
+                    <!-- التقييم العام -->
+                    <div class="rating-row">
+                        <div class="rating-info">
+                            <h3>Overall Rating</h3>
+                            <p>How do you rate the appliance overall?</p>
+                        </div>
+                        <div class="stars-container">
+                            <input type="radio" name="rating" id="star5" value="5" required>
+                            <label for="star5">★</label>
+                            <input type="radio" name="rating" id="star4" value="4">
+                            <label for="star4">★</label>
+                            <input type="radio" name="rating" id="star3" value="3">
+                            <label for="star3">★</label>
+                            <input type="radio" name="rating" id="star2" value="2">
+                            <label for="star2">★</label>
+                            <input type="radio" name="rating" id="star1" value="1">
+                            <label for="star1">★</label>
+                        </div>
+                    </div>
+
+                    <!-- التقييمات الفرعية -->
+                    <div class="sub-ratings-grid">
+                        <div class="sub-rating-item">
+                            <span>Energy Efficiency (توفير الكهرباء)</span>
+                            <div class="mini-stars">
+                                <input type="radio" name="sub_energy" id="e5" value="5"><label for="e5">★</label>
+                                <input type="radio" name="sub_energy" id="e4" value="4"><label for="e4">★</label>
+                                <input type="radio" name="sub_energy" id="e3" value="3"><label for="e3">★</label>
+                                <input type="radio" name="sub_energy" id="e2" value="2"><label for="e2">★</label>
+                                <input type="radio" name="sub_energy" id="e1" value="1"><label for="e1">★</label>
+                            </div>
+                        </div>
+
+                        <div class="sub-rating-item">
+                            <span>Build Quality (جودة التصنيع)</span>
+                            <div class="mini-stars">
+                                <input type="radio" name="sub_quality" id="q5" value="5"><label for="q5">★</label>
+                                <input type="radio" name="sub_quality" id="q4" value="4"><label for="q4">★</label>
+                                <input type="radio" name="sub_quality" id="q3" value="3"><label for="q3">★</label>
+                                <input type="radio" name="sub_quality" id="q2" value="2"><label for="q2">★</label>
+                                <input type="radio" name="sub_quality" id="q1" value="1"><label for="q1">★</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- عنوان التقييم -->
+                    <div class="form-group">
+                        <label for="reviewTitle">Review Title:</label>
+                        <input type="text" id="reviewTitle"
+                            placeholder="e.g., Excellent cooling, very quiet and efficient!" required>
+                    </div>
+
+                    <!-- التفاصيل والتعليق -->
+                    <div class="form-group">
+                        <label for="commentText">Detailed Review:</label>
+                        <textarea id="commentText" rows="4"
+                            placeholder="Write about appliance performance, delivery, installation quality, etc..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Review
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- الفوتر الموحد -->
+    <footer class="site-footer" id="footerr">
+        <div class="footer-container">
+            <div class="footer-row">
+
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone-alt"></i> 01019072072</p>
+                        <p><i class="fas fa-phone-alt"></i> 01019116940</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/17YwGuaNRB/" target="_blank" title="Facebook"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://maps.app.goo.gl/gqDSd7Xd1zEnEYT67" target="_blank" title="Google Maps"><i
+                                class="fas fa-location-dot"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>الدعم والمساعدة</h4>
+                    <ul>
+                        <p class="issue-text">واجهتك مشكلة؟</p>
+                        <a href="https://www.facebook.com/share/17YwGuaNRB/" target="_blank" class="contact-link">اتصل
+                            بنا <i class="fas fa-arrow-left"></i></a>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Elbadr Technology. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- تم تعديل مسار ملف الـ JS هنا -->
+    <script src="review.js"></script>
+</body>
+
+</html>

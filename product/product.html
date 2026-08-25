@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elbadr Technology - Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="product.css">
+    <link rel="icon" href="elbadr LOGO.jpg">
+</head>
+
+<body>
+
+    <!-- شريط الهيدر العلوي للموبايل (يحتوي على الثلاث شرط + اللوجو + السلة فقط) -->
+    <div class="mobile-top-bar">
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <a href="../home/home.html" class="mobile-logo">
+            <img src="elbadr LOGO.jpg" alt="Elbadr Logo" class="brand-logo">
+        </a>
+        <button onclick="toggleCart()" class="mobile-cart-btn">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="mobile-cart-count">0</span>
+        </button>
+    </div>
+
+    <!-- تخطيط الصفحة الجانبي -->
+    <div class="store-layout">
+
+        <!-- الشريط الجانبي (يتحول لقائمة منزلقة في الموبايل) -->
+        <aside class="sidebar-panel">
+            <button class="mobile-close-sidebar" onclick="toggleMobileMenu()">&times;</button>
+            <a href="../home/home.html" class="sidebar-logo">
+                <img src="elbadr LOGO.jpg" alt="Elbadr Logo" class="brand-logo">
+                <span>Elbadr Tech</span>
+            </a>
+
+            <nav class="sidebar-nav">
+                <ul class="sidebar-nav-links">
+                    <div id="user-nav-links" style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
+                    </div>
+                    <li>
+                        <button onclick="toggleCart()" class="cart-sidebar-btn">
+                            <i class="fa-solid fa-cart-shopping"></i> Cart
+                            <span id="cart-count">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-categories" style="max-height: calc(100vh - 220px); overflow-y: auto;">
+                <h3 class="categories-title">Categories</h3>
+                <button class="tab-btn active" onclick="filterMenu('all')">All Products <i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <button class="tab-btn" onclick="filterMenu('refrigerators')">Refrigerators <i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <button class="tab-btn" onclick="filterMenu('freezers')">Freezers <i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <button class="tab-btn" onclick="filterMenu('washing_machines')">Washing Machines <i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <button class="tab-btn" onclick="filterMenu('cookers')">Cookers & Built-in <i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <button class="tab-btn" onclick="filterMenu('air_conditioners')">Air Conditioners <i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <button class="tab-btn" onclick="filterMenu('water_heaters')">Water Heaters <i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <button class="tab-btn" onclick="filterMenu('hoods')">Hoods <i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <button class="tab-btn" onclick="filterMenu('water_dispensers')">Water Dispensers <i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <button class="tab-btn" onclick="filterMenu('fans')">Fans <i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <button class="tab-btn" onclick="filterMenu('kitchen_machines')">Kitchen Machines <i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <button class="tab-btn" onclick="filterMenu('small_appliances')">Small Appliances <i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <button class="tab-btn" onclick="filterMenu('screens')">Screens & TV <i
+                        class="fa-solid fa-chevron-right"></i></button>
+                <button class="tab-btn" onclick="filterMenu('microwaves')">Microwaves & Ovens <i
+                        class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </aside>
+
+        <!-- المحتوى الرئيسي (المنتجات) -->
+        <main class="main-content">
+            <div class="products-section-wrapper">
+                <div class="products-header-row">
+                    <h2>Featured Appliances</h2>
+                    <span>High Quality Store</span>
+                </div>
+
+                <div class="menu-grid" id="menu-grid">
+                    <!-- المنتجات تُعرض ديناميكياً هنا -->
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- سلة المشتريات الجانبية المنزلقة -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button onclick="toggleCart()" class="close-cart">&times;</button>
+        </div>
+
+        <div class="cart-items" id="cart-items">
+            <p class="empty-msg">Your cart is empty.</p>
+        </div>
+
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="cart-total">E£0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <footer class="site-footer" id="footerr">
+        <div class="footer-container">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone-alt"></i> 01019072072</p>
+                        <p><i class="fas fa-phone-alt"></i> 01019116940</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/17YwGuaNRB/" target="_blank" title="Facebook"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://maps.app.goo.gl/gqDSd7Xd1zEnEYT67" target="_blank" title="Google Maps"><i
+                                class="fas fa-location-dot"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>الدعم والمساعدة</h4>
+                    <ul>
+                        <p class="issue-text">واجهتك مشكلة؟</p>
+                        <a href="https://www.facebook.com/share/17YwGuaNRB/" target="_blank" class="contact-link">اتصل
+                            بنا <i class="fas fa-arrow-left"></i></a>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Elbadr Technology. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- دالة فتح وإغلاق القائمة الجانبية للموبايل -->
+    <script>
+        function toggleMobileMenu() {
+            const sidebar = document.querySelector('.sidebar-panel');
+            sidebar.classList.toggle('mobile-open');
+        }
+    </script>
+    <script src="product.js">// دالة لتحديث عداد السلة في الهيدر العلوي (موبايل وديسكتوب)
+        function updateCartCount(newCount) {
+            const desktopCount = document.getElementById('cart-count');
+            const mobileCount = document.getElementById('mobile-cart-count');
+
+            if (desktopCount) desktopCount.textContent = newCount;
+            if (mobileCount) mobileCount.textContent = newCount;
+        }
+
+        // إذا كان لديك مصفوفة أو متغير يحسب المنتجات في السلة (مثلاً cartArray):
+        // يمكنك استدعاء الدالة هكذا كلما زاد عنصر:
+        // updateCartCount(cartArray.length);</script>
+</body>
+
+</html>

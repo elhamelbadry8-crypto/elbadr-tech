@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elbadr - Electrical Appliances Authentication</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="elbadr LOGO.jpg">
+</head>
+
+<body>
+
+    <div class="container" id="container">
+
+        <!-- اللوحة الجانبية مع اللوجو -->
+        <div class="brand-panel">
+            <img src="elbadr LOGO.jpg" alt="Elbadr Logo" class="brand-logo-img">
+            <h2>Elbadr Store</h2>
+            <p>Discover the best smart electrical appliances and high-end home electronics.</p>
+        </div>
+
+        <!-- لوحة النماذج (تسجيل الدخول / إنشاء حساب) -->
+        <div class="forms-panel">
+
+            <!-- نموذج تسجيل الدخول -->
+            <div class="form-container active" id="loginFormContainer">
+                <div class="form-header">
+                    <h3>Welcome Back!</h3>
+                    <p>Please enter your credentials to login</p>
+                </div>
+
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="loginUsername" placeholder="name@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="loginPassword" placeholder="••••••••" required>
+                            <i class="fa-solid fa-eye toggle-password" id="toggleLoginPassword"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <label class="remember-me">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#" class="forgot-pass">Forgot Password?</a>
+                    </div>
+
+                    <div class="buttons-group">
+                        <button type="submit" class="btn-login">Login <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </form>
+
+                <p class="footer-copy">Don't have an account? <span class="switch-auth" id="showSignup">Sign up</span>
+                </p>
+            </div>
+
+            <!-- نموذج إنشاء حساب جديد -->
+            <div class="form-container" id="signupFormContainer">
+                <div class="form-header">
+                    <h3>Create Account</h3>
+                    <p>Join us and explore premium electrical appliances</p>
+                </div>
+
+                <form id="signupForm">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-signature"></i>
+                            <input type="text" id="signupName" placeholder="Full name" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="signupEmail" placeholder="name@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Phone Number</label>
+                        <div class="input-wrapper">
+                            <i class="fa fa-phone"></i>
+                            <input type="tel" id="signupPhone" placeholder="Phone number" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="signupPassword" placeholder="••••••••" required>
+                            <i class="fa-solid fa-eye toggle-password" id="toggleSignupPassword"></i>
+                        </div>
+                    </div>
+
+                    <div class="buttons-group">
+                        <button type="submit" class="btn-login">Sign up <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </form>
+
+                <p class="footer-copy">Already have an account? <span class="switch-auth" id="showLogin">Login</span>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // تبديل النماذج بين تسجيل الدخول وإنشاء حساب
+        const showSignup = document.getElementById('showSignup');
+        const showLogin = document.getElementById('showLogin');
+        const loginContainer = document.getElementById('loginFormContainer');
+        const signupContainer = document.getElementById('signupFormContainer');
+
+        showSignup.addEventListener('click', () => {
+            loginContainer.classList.remove('active');
+            signupContainer.classList.add('active');
+        });
+
+        showLogin.addEventListener('click', () => {
+            signupContainer.classList.remove('active');
+            loginContainer.classList.add('active');
+        });
+
+        // تشغيل أيقونة العين لإظهار وإخفاء كلمة المرور
+        function setupPasswordToggle(toggleId, inputId) {
+            const toggleBtn = document.getElementById(toggleId);
+            const passwordInput = document.getElementById(inputId);
+            if (toggleBtn && passwordInput) {
+                toggleBtn.addEventListener('click', () => {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    toggleBtn.classList.toggle('fa-eye');
+                    toggleBtn.classList.toggle('fa-eye-slash');
+                });
+            }
+        }
+
+        setupPasswordToggle('toggleLoginPassword', 'loginPassword');
+        setupPasswordToggle('toggleSignupPassword', 'signupPassword');
+    </script>
+    <script src="login.js"></script>
+</body>
+
+</html>

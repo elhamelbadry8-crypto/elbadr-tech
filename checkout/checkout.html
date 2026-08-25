@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout & Payment - ELBADR Store</title>
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="AKLTECH LOGO.jpg">
+</head>
+
+<body>
+
+    <header class="checkout-header">
+        <div class="container nav-flex">
+            <a href="../product/product.html" id="dynamic-back-link" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i> <span>Back</span>
+            </a>
+
+            <div class="brand-logo" onclick="window.location.href='../home/home.html'" style="cursor: pointer;">
+                Elbadr Tecnology
+            </div>
+            <div class="secure-badge"><i class="fa-solid fa-lock"></i> Secure Checkout</div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- الصندوق الرئيسي للدفع والعنوان -->
+        <div class="main-card-box">
+            <div class="card-top-header">
+                CHECKOUT DETAILS & PAYMENT
+            </div>
+            <div class="card-inner-body">
+
+                <!-- قسم تفاصيل وعنوان التوصيل -->
+                <div class="section-subtitle">
+                    <i class="fa-solid fa-location-dot"></i> SHIPPING & DELIVERY ADDRESS
+                </div>
+
+                <div class="form-grid-2x2">
+                    <div class="input-group-custom">
+                        <label>FULL NAME</label>
+                        <div class="input-with-icon">
+                            <input type="text" placeholder="Receiver Full Name" id="shipping-name">
+                            <div class="input-icon-right"><i class="fa-regular fa-user"></i></div>
+                        </div>
+                    </div>
+
+                    <div class="input-group-custom">
+                        <label>PHONE NUMBER</label>
+                        <div class="input-with-icon">
+                            <input type="tel" placeholder="010XXXXXXXX" id="shipping-phone">
+                            <div class="input-icon-right"><i class="fa-solid fa-phone"></i></div>
+                        </div>
+                    </div>
+
+                    <div class="input-group-custom">
+                        <label>CITY / REGION</label>
+                        <div class="input-with-icon">
+                            <input type="text" value="Hurghada, Egypt" id="shipping-city">
+                            <div class="input-icon-right"><i class="fa-solid fa-city"></i></div>
+                        </div>
+                    </div>
+
+                    <div class="input-group-custom">
+                        <label>STREET ADDRESS</label>
+                        <div class="input-with-icon">
+                            <input type="text" placeholder="Street name, Building No, Apartment" id="shipping-address">
+                            <div class="input-icon-right"><i class="fa-solid fa-map-pin"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- قسم طريقة الدفع -->
+                <div class="section-subtitle">
+                    <i class="fa-solid fa-wallet"></i> CHOOSE A PAYMENT METHOD
+                </div>
+
+                <div class="payment-grid-3">
+                    <label class="payment-option-card">
+                        <input type="radio" name="payment" value="card" checked>
+                        <div class="p-box-content">
+                            <i class="fa-solid fa-credit-card"></i>
+                            <span>CREDIT CARD</span>
+                        </div>
+                        <div class="option-check"><i class="fa-solid fa-check"></i></div>
+                    </label>
+
+                    <label class="payment-option-card">
+                        <input type="radio" name="payment" value="paypal">
+                        <div class="p-box-content">
+                            <i class="fa-brands fa-paypal" style="color: #003087;"></i>
+                            <span>PAY PAL</span>
+                        </div>
+                        <div class="option-check"><i class="fa-solid fa-check"></i></div>
+                    </label>
+
+                    <label class="payment-option-card">
+                        <input type="radio" name="payment" value="cash">
+                        <div class="p-box-content">
+                            <i class="fa-solid fa-wallet"></i>
+                            <span>PAY CASH</span>
+                        </div>
+                        <div class="option-check"><i class="fa-solid fa-check"></i></div>
+                    </label>
+                </div>
+
+                <!-- نموذج تفاصيل الكارت -->
+                <div id="card-details-form" class="payment-form-section show">
+                    <div class="form-grid-2x2">
+                        <div class="input-group-custom">
+                            <label>CARD NUMBER</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="1234  4567  8910  1234" id="cc-number">
+                                <div class="input-icon-right">
+                                    <span class="visa-tag">VISA</span>
+                                    <div class="blue-check-badge"><i class="fa-solid fa-check"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group-custom">
+                            <label>EXPIRATION DATE</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="MM / YY" id="cc-expiry">
+                                <div class="input-icon-right"><i class="fa-regular fa-calendar-days"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="input-group-custom">
+                            <label>CARD HOLDER NAME</label>
+                            <div class="input-with-icon">
+                                <input type="text" placeholder="Full Name on Card" id="cc-holder">
+                            </div>
+                        </div>
+
+                        <div class="input-group-custom">
+                            <label>CVV</label>
+                            <div class="input-with-icon">
+                                <input type="password" placeholder="CVC" maxlength="4" id="cc-cvv">
+                                <div class="input-icon-right"><i class="fa-regular fa-credit-card"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- نموذج PayPal -->
+                <div id="paypal-details-form" class="payment-form-section">
+                    <div class="form-grid-2x2">
+                        <div class="input-group-custom" style="grid-column: span 2;">
+                            <label>PAYPAL ACCOUNT EMAIL</label>
+                            <div class="input-with-icon">
+                                <input type="email" placeholder="name@example.com" id="paypal-email">
+                                <div class="input-icon-right"><i class="fa-brands fa-paypal"
+                                        style="color: #003087;"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الملاحظات ومراجعة المنتجات -->
+                <div class="additional-sections">
+                    <div class="mini-box">
+                        <h4><i class="fa-regular fa-comment-dots"></i> Order Notes</h4>
+                        <textarea id="order-notes"
+                            style="width:100%; padding:10px; border:1px solid var(--border); border-radius:8px; font-family:inherit; font-size:0.85rem; outline:none;"
+                            placeholder="Special instructions..." rows="2"></textarea>
+                    </div>
+                    <div class="mini-box">
+                        <h4><i class="fa-solid fa-plug"></i> Selected Appliances</h4>
+                        <div class="items-mini-list" id="checkout-items-list"></div>
+                    </div>
+                </div>
+
+                <!-- زر الإتمام المزدوج -->
+                <div class="checkout-action-row">
+                    <button class="dual-action-btn" onclick="processPayment(this)">
+                        <div class="btn-sum-part" id="btn-sum-text">SUM: E£0.00</div>
+                        <div class="btn-place-part">
+                            <span class="btn-text">PLACE ORDER</span>
+                            <div class="spinner"></div>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 ELBADR. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="checkout.js"></script>
+</body>
+
+</html>

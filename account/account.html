@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Elbadr Technology</title>
+    <link rel="stylesheet" href="account.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="elbadr LOGO.jpg">
+</head>
+
+<body>
+    <!-- الهيدر العلوي -->
+    <header class="site-header">
+        <div class="header-container">
+            <!-- اللوجو -->
+            <div class="header-brand">
+                <a href="../home/home.html" class="logo-link">
+                    <img src="elbadr LOGO.jpg" alt="Elbadr Tech Logo" class="brand-logo-img"
+                        onerror="this.style.display='none'; document.getElementById('fallback-logo-text').style.display='block';">
+                    <span id="fallback-logo-text" class="logo-text" style="display: none;">Elbadr Tech</span>
+                </a>
+            </div>
+
+            <!-- خيارات الهيدر -->
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="../home/home.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../product/product.html"><i class="fas fa-shopping-bag"></i> Products</a></li>
+                    <li><a href="#footerr"><i class="fas fa-headset"></i> Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <!-- زر تسجيل الخروج -->
+            <div class="header-actions">
+                <a href="#" onclick="logoutUser()" class="header-logout-btn"><i class="fas fa-sign-out-alt"></i>
+                    Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- محتوى الصفحة الرئيسي -->
+    <div class="account-container">
+        <!-- الكارت الرئيسي للبيانات -->
+        <section class="account-card-modern">
+
+            <!-- وضع العرض (Display Mode) -->
+            <div id="display-mode">
+                <div class="account-header-center">
+                    <div class="user-avatar-wrapper" id="avatar-container">
+                        <i class="fas fa-user-circle" id="default-avatar-icon"></i>
+                        <img id="account-image-display" src="" alt="Account Picture" style="display: none;">
+                    </div>
+                    <h2 id="user-name">Loading...</h2>
+                    <span class="account-role-badge">Elbadr Tech Customer</span>
+                </div>
+
+                <!-- قائمة البيانات كبطاقات منفصلة -->
+                <div class="info-cards-list">
+                    <div class="info-card-item">
+                        <div class="icon-box"><i class="fas fa-phone"></i></div>
+                        <div class="info-content">
+                            <span class="info-label">PHONE</span>
+                            <span class="info-value" id="user-phone">--</span>
+                        </div>
+                    </div>
+
+                    <div class="info-card-item">
+                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                        <div class="info-content">
+                            <span class="info-label">EMAIL</span>
+                            <span class="info-value" id="user-email">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- أزرار التحكم -->
+                <div class="account-actions">
+                    <button onclick="enableEdit()" class="btn-primary-custom">
+                        <i class="fas fa-edit"></i> Edit Account
+                    </button>
+                    <button onclick="showDeleteModal()" class="btn-danger-custom">
+                        <i class="fas fa-trash-alt"></i> Delete Account
+                    </button>
+                </div>
+            </div>
+
+            <!-- وضع التعديل (Edit Mode) -->
+            <div id="edit-mode" style="display: none;">
+                <h3 class="edit-title">Edit Account</h3>
+
+                <div class="input-group">
+                    <label>Account Picture <small>(Optional)</small></label>
+                    <input type="file" id="edit-image" accept="image/*" class="custom-input">
+                </div>
+
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="edit-name" placeholder="Full Name" class="custom-input">
+                </div>
+
+                <div class="input-group">
+                    <label>Email <small>(Cannot be changed)</small></label>
+                    <div class="static-email-box"><i class="fas fa-envelope"></i> <span
+                            id="edit-email-display">--</span></div>
+                </div>
+
+                <div class="input-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="edit-phone" placeholder="Phone Number" class="custom-input">
+                </div>
+
+                <div class="account-actions">
+                    <button onclick="saveAccount()" class="btn-primary-custom" id="save-account-btn">Save
+                        Changes</button>
+                    <button onclick="cancelEdit()" class="btn-outline-custom">Cancel</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- نافذة تأكيد حذف الحساب -->
+    <div id="delete-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-box">
+            <i class="fas fa-exclamation-triangle warning-icon"></i>
+            <h3>Delete Account</h3>
+            <p>Warning: This action cannot be undone. Please enter your password to confirm account deletion.</p>
+
+            <input type="password" id="delete-password" placeholder="Enter your password" class="custom-input"
+                style="margin-bottom: 20px;">
+
+            <div style="display: flex; gap: 10px;">
+                <button onclick="confirmDeleteAccount()" id="confirm-delete-btn" class="btn-danger-custom"
+                    style="flex: 1;">Delete</button>
+                <button onclick="hideDeleteModal()" class="btn-outline-custom" style="flex: 1;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر الموحد -->
+    <footer class="site-footer" id="footerr">
+        <div class="footer-container">
+            <div class="footer-row">
+
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone-alt"></i> 01019072072</p>
+                        <p><i class="fas fa-phone-alt"></i> 01019116940</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/17YwGuaNRB/" target="_blank" title="Facebook"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://maps.app.goo.gl/gqDSd7Xd1zEnEYT67" target="_blank" title="Google Maps"><i
+                                class="fas fa-location-dot"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>الدعم والمساعدة</h4>
+                    <ul>
+                        <p class="issue-text">واجهتك مشكلة؟</p>
+                        <a href="https://www.facebook.com/share/17YwGuaNRB/" target="_blank" class="contact-link">اتصل
+                            بنا <i class="fas fa-arrow-left"></i></a>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Elbadr Technology. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="account.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking - Elbadr Technology</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="tracking.css">
+    <link rel="icon" href="../account/elbadr LOGO.jpg">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="../home/home.html" class="logo-link">
+            <img src="../account/elbadr LOGO.jpg" alt="Elbadr Tech Logo" class="brand-logo-img"
+                onerror="this.style.display='none'; document.getElementById('fallback-logo-text').style.display='inline';">
+            <span id="fallback-logo-text" class="logo-text">Elbadr Tech</span>
+        </a>
+        <nav class="navig">
+            <ul>
+                <li><a href="#" id="auth-link"><span id="auth-text">Account</span></a></li>
+                <li><a href="../product/product.html">Products</a></li>
+                <li><a href="#footerr">Contact us</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="main-container">
+
+            <div class="page-header">
+                <h2>My Orders</h2>
+            </div>
+
+            <div class="tabs-wrapper">
+                <button class="tab-btn active" onclick="switchTab('active')">Active Orders</button>
+                <button class="tab-btn" onclick="switchTab('history')">all Orders</button>
+            </div>
+
+            <!-- Active View -->
+            <div id="active-view">
+                <div id="orders-container">
+                    <div class="order-card">
+                        <div class="card-header-bar">
+                            <div class="order-id">
+                                <h3>Order #98240</h3>
+                                <span>Placed Recently</span>
+                            </div>
+                        </div>
+
+                        <div class="card-body-content">
+                            <div class="tracking-status-header">
+                                <h3>Ordered</h3>
+                                <p>Your order has been received and is being prepared.</p>
+                            </div>
+
+                            <div class="progress-container">
+                                <div class="progress-line-bg">
+                                    <div class="progress-line-fill"></div>
+                                </div>
+                                <div class="progress-steps">
+                                    <div class="p-step active">
+                                        <div class="p-dot"><i class="fa-solid fa-check"></i></div>
+                                        <div class="p-label">Ordered</div>
+                                    </div>
+                                    <div class="p-step">
+                                        <div class="p-dot"><i class="fa-solid fa-check"></i></div>
+                                        <div class="p-label">Shipped</div>
+                                    </div>
+                                    <div class="p-step">
+                                        <div class="p-dot"><i class="fa-solid fa-check"></i></div>
+                                        <div class="p-label">Out for delivery</div>
+                                    </div>
+                                    <div class="p-step">
+                                        <div class="p-dot"><i class="fa-solid fa-check"></i></div>
+                                        <div class="p-label">Delivered</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer-bar">
+                            <button class="btn-cancel">Cancel Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="no-active-msg" class="empty-content hidden">
+                    <h2>No Active Orders</h2>
+                </div>
+            </div>
+
+            <!-- History View -->
+            <div id="history-view" class="hidden">
+                <div id="history-container"></div>
+                <div id="no-history-msg" class="empty-content hidden">
+                    <h2>No History</h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="site-footer" id="footerr">
+        <div class="footer-container">
+            <div class="footer-contact-info">
+                <div class="contact-numbers">
+                    <span><i class="fa-solid fa-phone"></i> 01019072072</span>
+                    <span><i class="fa-solid fa-phone"></i> 01019116940</span>
+                </div>
+                <div class="social-links-clean">
+                    <a href="https://www.facebook.com/share/17YwGuaNRB/" target="_blank" title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i> Facebook
+                    </a>
+                    <a href="https://maps.app.goo.gl/gqDSd7Xd1zEnEYT67" target="_blank" title="Location on Google Maps">
+                        <i class="fa-solid fa-location-dot"></i> Google Maps
+                    </a>
+                </div>
+            </div>
+            <p class="copyright-text">&copy; 2026 Elbadr Technology. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="tracking.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,675 @@
+/* ==========================================
+   1. VARIABLES & GLOBAL STYLES
+   ========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+    font-family: 'myfont';
+    src: url('docktrin.ttf') format('truetype');
+}
+
+:root {
+    --primary: #0b1d49;
+    --secondary: #1e3a8a;
+    --accent: #007bff;
+    --accent-hover: #0056b3;
+    --bg-light: #f4f6f9;
+    --white: #ffffff;
+    --text-dark: #2c3e50;
+    --text-gray: #7f8c8d;
+    --border: #e2e8f0;
+    --radius: 12px;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--bg-light);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================
+   2. HEADER (مضبوط بجانب بعضه تماماً)
+   ========================================== */
+.checkout-header {
+    background: var(--white);
+    padding: 14px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.back-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+.brand-logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary);
+    letter-spacing: 1px;
+    font-family: 'myfont', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.secure-badge {
+    font-size: 0.8rem;
+    color: #10b981;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #ecfdf5;
+    padding: 6px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+/* ==========================================
+   3. MAIN CONTENT & PROGRESS STEPS
+   ========================================== */
+main {
+    flex: 1;
+    width: 100%;
+    padding: 25px 0;
+}
+
+.steps-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 30px auto;
+    width: 100%;
+    max-width: 750px;
+    position: relative;
+    padding: 0 15px;
+}
+
+.steps-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 40px;
+    right: 40px;
+    height: 2px;
+    background: #cbd5e1;
+    z-index: 1;
+}
+
+.step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    gap: 6px;
+}
+
+.step-bullet {
+    width: 14px;
+    height: 14px;
+    background: #cbd5e1;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #cbd5e1;
+    transition: all 0.3s ease;
+}
+
+.step-item.active .step-bullet {
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.step-item span {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.step-item.active span {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* ==========================================
+   4. MAIN CARD & PAYMENT OPTIONS (Side-by-Side)
+   ========================================== */
+.main-card-box {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.card-top-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+}
+
+.card-inner-body {
+    padding: 25px 20px;
+}
+
+.section-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* بطاقات طرق الدفع (3 اعمدة بجانب بعض دائماً) */
+.payment-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.payment-option-card {
+    cursor: pointer;
+    position: relative;
+}
+
+.payment-option-card input {
+    display: none;
+}
+
+.p-box-content {
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 15px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--white);
+    transition: all 0.3s ease;
+    height: 90px;
+    text-align: center;
+}
+
+.p-box-content i {
+    font-size: 22px;
+    color: var(--text-gray);
+    transition: color 0.3s ease;
+}
+
+.p-box-content span {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-gray);
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.option-check {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: #fff;
+    background: var(--accent);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.3s ease;
+}
+
+/* Selected State */
+.payment-option-card input:checked+.p-box-content {
+    border-color: var(--accent);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.12);
+    background: #fdfefe;
+}
+
+.payment-option-card input:checked+.p-box-content i,
+.payment-option-card input:checked+.p-box-content span {
+    color: var(--accent);
+}
+
+.payment-option-card input:checked~.option-check,
+.payment-option-card input:checked+.p-box-content .option-check {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ==========================================
+   5. FORMS & INPUTS (Side-by-Side 2 Columns)
+   ========================================== */
+.payment-form-section {
+    display: none;
+}
+
+.payment-form-section.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* المدخلات بجانب بعضها (عمودين) */
+.form-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.input-group-custom {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group-custom label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-gray);
+    letter-spacing: 0.5px;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 12px 14px;
+    padding-right: 40px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    background: #fff;
+    outline: none;
+    color: var(--text-dark);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-with-icon input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.input-icon-right {
+    position: absolute;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-gray);
+    font-size: 1rem;
+}
+
+.visa-tag {
+    background: #f58220;
+    color: white;
+    font-weight: 800;
+    font-size: 0.65rem;
+    padding: 2px 5px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.blue-check-badge {
+    color: var(--accent);
+    background: #e6f0fa;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+/* ==========================================
+   6. ACTIONS & ADDITIONAL SECTIONS
+   ========================================== */
+.checkout-action-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.dual-action-btn {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.22);
+    cursor: pointer;
+    border: none;
+    width: 340px;
+    transition: transform 0.2s;
+}
+
+.dual-action-btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-sum-part {
+    background: #0069d9;
+    color: white;
+    padding: 14px 18px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-place-part {
+    background: var(--accent);
+    color: white;
+    padding: 14px 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex: 1.2;
+    text-align: center;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-place-part:hover {
+    background: var(--accent-hover);
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* الاقسام الاضافية بجانب بعضها */
+.additional-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.mini-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+}
+
+.mini-box h4 {
+    font-size: 0.85rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.items-mini-list {
+    max-height: 140px;
+    overflow-y: auto;
+}
+
+.mini-item-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    padding: 6px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* ==========================================
+   7. FOOTER
+   ========================================== */
+.site-footer {
+    background-color: #02040a;
+    color: #b0b0b0;
+    padding: 25px 0 15px;
+    margin-top: auto;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 15px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/* ==========================================
+   8. RESPONSIVE DESIGN (مضبوط بجانب بعضه للموبايل)
+   ========================================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    /* الهيدر على التابلت والموبايل */
+    .brand-logo {
+        font-size: 1.3rem;
+    }
+
+    .secure-badge {
+        font-size: 0.73rem;
+        padding: 4px 8px;
+    }
+
+    .back-link {
+        font-size: 0.8rem;
+    }
+
+    .steps-wrapper::before {
+        left: 25px;
+        right: 25px;
+    }
+
+    .steps-wrapper span {
+        font-size: 0.68rem;
+    }
+
+    /* الابقاء على 3 بطاقات دفع بجانب بعضها مع تقليل الحجم */
+    .payment-grid-3 {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 6px;
+    }
+
+    .p-box-content {
+        height: 75px;
+        padding: 10px 4px;
+        gap: 4px;
+    }
+
+    .p-box-content i {
+        font-size: 18px;
+    }
+
+    .p-box-content span {
+        font-size: 0.7rem;
+    }
+
+    /* الابقاء على مدخلات الفورم بجانب بعضها (عمودين) */
+    .form-grid-2x2 {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px;
+    }
+
+    .input-with-icon input {
+        padding: 10px 10px;
+        padding-right: 32px;
+        font-size: 0.8rem;
+    }
+
+    .input-icon-right {
+        right: 8px;
+        font-size: 0.9rem;
+    }
+
+    .dual-action-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* ضبط الهيدر للشاشات الصغير جداً */
+    .checkout-header {
+        padding: 10px 0;
+    }
+
+    .brand-logo {
+        font-size: 1.1rem;
+    }
+
+    .back-link span {
+        display: none;
+        /* إخفاء النص والإبقاء على سهم الرجوع لتوفير مساحة */
+    }
+
+    .back-link i {
+        font-size: 1.1rem;
+    }
+
+    .secure-badge {
+        font-size: 0.65rem;
+        padding: 3px 6px;
+    }
+
+    .card-top-header {
+        padding: 14px 15px;
+        font-size: 0.85rem;
+    }
+
+    .card-inner-body {
+        padding: 15px 12px;
+    }
+
+    .p-box-content {
+        height: 68px;
+        border-width: 1.5px;
+    }
+
+    .p-box-content i {
+        font-size: 16px;
+    }
+
+    .p-box-content span {
+        font-size: 0.63rem;
+    }
+
+    .option-check {
+        top: 4px;
+        right: 4px;
+        width: 15px;
+        height: 15px;
+        font-size: 8px;
+    }
+
+    .input-group-custom label {
+        font-size: 0.68rem;
+    }
+
+    .btn-sum-part,
+    .btn-place-part {
+        padding: 12px 10px;
+        font-size: 0.82rem;
+    }
+
+    /* إبقاء الأقسام الإضافية بجانب بعضها أو تحت بعضها حسب المساحة الدقيقة */
+    .additional-sections {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .mini-box {
+        padding: 10px;
+    }
+
+    .mini-box h4 {
+        font-size: 0.75rem;
+    }
+}
