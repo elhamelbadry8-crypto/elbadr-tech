@@ -1,3 +1,6 @@
+// رابط الـ API الأساسي على Vercel
+const API_BASE_URL = "https://elbadr-tecnolog.vercel.app";
+
 document.addEventListener("DOMContentLoaded", () => {
     
     // --- تحديث الـ Navbar وتغيير المسميات بناءً على حالة تسجيل الدخول ---
