@@ -17,7 +17,7 @@ if (signInMobileLink) signInMobileLink.addEventListener('click', () => container
 // ==========================================
 // 2. إعدادات السيرفر 
 // ==========================================
-const API_BASE_URL = 'http://127.0.0.1:5000/api'; 
+const API_BASE_URL = 'https://elbadr-tecnolog.vercel.app/api'; 
 
 // ==========================================
 // 🔴 إضافة أمنية: تنظيف المدخلات لمنع الـ XSS
