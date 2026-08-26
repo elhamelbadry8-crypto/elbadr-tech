@@ -499,7 +499,3 @@ def delete_account(current_user_id):
         return jsonify({'error': 'Failed to delete account.'}), 500
     finally:
         if 'conn' in locals(): conn.close()
-
-if __name__ == '__main__':
-    is_prod = os.environ.get('FLASK_ENV') == 'production'
-    app.run(debug=not is_prod, port=5000)
