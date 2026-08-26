@@ -1,5 +1,5 @@
 let currentAccountData = {}; 
-const API_BASE_URL = 'https://elbadr-tecnolog.vercel.app/api'; 
+const API_BASE_URL = 'https://elbadr-tecnolog.vercel.app'; 
 
 document.addEventListener("DOMContentLoaded", async () => {
     const token = localStorage.getItem("jwtToken");
