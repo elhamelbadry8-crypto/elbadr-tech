@@ -1,0 +1,9 @@
+Flask
+flask-cors
+python-tds
+python-dotenv
+werkzeug
+PyJWT
+prophet
+pandas
+numpy
